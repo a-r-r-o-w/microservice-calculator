@@ -1,0 +1,150 @@
+version: "3.3"
+
+networks:
+  backend:
+  frontend:
+
+services:
+  add:
+    build: ./calculator/backend/add
+    ports:
+      - 8000:8000
+    networks:
+      backend:
+        aliases:
+          - add
+  
+  subtract:
+    build: ./calculator/backend/subtract
+    ports:
+      - 8001:8001
+    networks:
+      backend:
+        aliases:
+          - subtract
+  
+  multiply:
+    build: ./calculator/backend/multiply
+    ports:
+      - 8002:8002
+    networks:
+      backend:
+        aliases:
+          - multiply
+    
+  divide:
+    build: ./calculator/backend/divide
+    ports:
+      - 8003:8003
+    networks:
+      backend:
+        aliases:
+          - divide
+  
+  pow:
+    build: ./calculator/backend/pow
+    ports:
+      - 8004:8004
+    networks:
+      backend:
+        aliases:
+          - pow
+  
+  mod:
+    build: ./calculator/backend/mod
+    ports:
+      - 8005:8005
+    networks:
+      backend:
+        aliases:
+          - mod
+  
+  lt:
+    build: ./calculator/backend/lt
+    ports:
+      - 8006:8006
+    networks:
+      backend:
+        aliases:
+          - lt
+  
+  gt:
+    build: ./calculator/backend/gt
+    ports:
+      - 8007:8007
+    networks:
+      backend:
+        aliases:
+          - gt
+  
+  eq:
+    build: ./calculator/backend/eq
+    ports:
+      - 8008:8008
+    networks:
+      backend:
+        aliases:
+          - eq
+  
+  ne:
+    build: ./calculator/backend/ne
+    ports:
+      - 8009:8009
+    networks:
+      backend:
+        aliases:
+          - ne
+  
+  leq:
+    build: ./calculator/backend/leq
+    ports:
+      - 8010:8010
+    networks:
+      backend:
+        aliases:
+          - leq
+  
+  geq:
+    build: ./calculator/backend/geq
+    ports:
+      - 8011:8011
+    networks:
+      backend:
+        aliases:
+          - geq
+  
+  gcd:
+    build: ./calculator/backend/gcd
+    ports:
+      - 8012:8012
+    networks:
+      backend:
+        aliases:
+          - gcd
+  
+  app:
+    build: ./calculator/frontend
+    hostname: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - add
+      - subtract
+      - multiply
+      - divide
+      - pow
+      - mod
+      - lt
+      - gt
+      - eq
+      - ne
+      - leq
+      - geq
+      - gcd
+    networks:
+      backend:
+        aliases:
+          - app
+      frontend:
+        aliases:
+          - app

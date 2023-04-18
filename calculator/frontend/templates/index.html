@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4 text-center">Calculator</h1>
+    <form action="/" method="POST" class="flex flex-col space-y-4">
+      <div class="flex space-x-4">
+        <input type="text" name="num1" placeholder="First Number" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50 text-center">
+        <input type="text" name="num2" placeholder="Second Number" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50 text-center">
+      </div>
+      <select name="operation" class="rounded-md border-black-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50 text-center">
+        <option>add</option>
+        <option>subtract</option>
+        <option>multiply</option>
+        <option>divide</option>
+        <option>pow</option>
+        <option>mod</option>
+        <option>lt</option>
+        <option>gt</option>
+        <option>eq</option>
+        <option>ne</option>
+        <option>leq</option>
+        <option>geq</option>
+        <option>gcd</option>
+      </select>
+      <button type="submit" name="submit" value="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50">Calculate</button>
+    </form>
+    <br />
+    {% if result %}
+      {% set ns = namespace(symbol = result.get('operation')) %}
+      {% if ns.symbol == 'add' %}
+        {% set ns.symbol = '+' %}
+      {% elif ns.symbol == 'subtract' %}
+        {% set ns.symbol = '-' %}
+      {% elif ns.symbol == 'multiply' %}
+        {% set ns.symbol = '*' %}
+      {% elif ns.symbol == 'divide' %}
+        {% set ns.symbol = '/' %}
+      {% elif ns.symbol == 'pow' %}
+        {% set ns.symbol = '**' %}
+      {% elif ns.symbol == 'mod' %}
+        {% set ns.symbol = '%' %}
+      {% elif ns.symbol == 'lt' %}
+        {% set ns.symbol = '<' %}
+      {% elif ns.symbol == 'gt' %}
+        {% set ns.symbol = '>' %}
+      {% elif ns.symbol == 'eq' %}
+        {% set ns.symbol = '==' %}
+      {% elif ns.symbol == 'ne' %}
+        {% set ns.symbol = '!=' %}
+      {% elif ns.symbol == 'leq' %}
+        {% set ns.symbol = '<=' %}
+      {% elif ns.symbol == 'geq' %}
+        {% set ns.symbol = '>=' %}
+      {% elif ns.symbol == 'gcd' %}
+        {% set ns.symbol = 'gcd' %}
+      {% endif %}
+      <div class="mt-4 text-center">
+        <h3 class="text-xl font-bold">Result: </h3>
+        <p>{{ result.get('num1') }} {{ ns.symbol }} {{ result.get('num2') }} = {{ result.get('result') }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
