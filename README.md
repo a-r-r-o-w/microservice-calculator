@@ -26,36 +26,6 @@ Overall, the project provides a scalable, distributed architecture for a calcula
 - Docker
 - Python 3
 
-### File Structure
-```
-.
-├── LICENSE
-├── calculator
-│   ├── backend
-│   │   ├── add
-│   │   │   ├── Dockerfile
-│   │   │   ├── app.py
-│   │   │   └── requirements.txt
-│   │   ├── divide
-│   │   │   ├── Dockerfile
-│   │   │   ├── app.py
-│   │   │   └── requirements.txt
-│   │   ├── multiply
-│   │   │   ├── Dockerfile
-│   │   │   ├── app.py
-│   │   │   └── requirements.txt
-│   │   └── subtract
-│   │       ├── Dockerfile
-│   │       ├── app.py
-│   │       └── requirements.txt
-│   └── frontend
-│       ├── Dockerfile
-│       ├── app.py
-│       ├── requirements.txt
-│       └── templates
-│           └── index.html
-└── docker-compose.yml
-```
 ### Installing
 
 ```
